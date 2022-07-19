@@ -642,6 +642,10 @@
 
     _setTime() {
       const date = new Date();
+      let tzDate = new Date(date.toLocaleString('en-US', { timeZone: "Europe/London" }));
+      let offset = tzDate.getTime() - date.getTime();
+      date.setTime(date.getTime() + offset);
+      
       let hours = $.pad(date.getHours());
       let amPm = '';
 
