@@ -754,7 +754,7 @@
           if (category === currentCategory) {
             return `
               <li class="command">
-                <a href="${url}" target="${this._newTab ? '_blank' : '_self'}">
+                <a href="${url}" target="${this._newTab ? '_blank' : '_self'}" rel="noopener noreferrer">
                   <span class="command-key">${key}</span>
                   <span class="command-name">${name}</span>
                 </a>
@@ -1251,8 +1251,7 @@
     }
 
     _redirect(redirect) {
-      if (this._newTab) window.open(redirect, '_blank');
-      else window.location.href = redirect;
+      window.open(redirect, this._newTab ? '_blank' : '_self', 'noopener noreferrer');
     }
 
     _registerEvents() {
